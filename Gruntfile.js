@@ -26,6 +26,11 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      target: {
+        files: {
+          'public/dist/builtUglify.min.js' : 'public/dist/built.js'
+        }
+      }
     },
 
     eslint: {
@@ -82,7 +87,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'concat'
+    'concat', 'uglify'
   ]);
 
   grunt.registerTask('upload', function(n) {
