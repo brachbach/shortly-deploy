@@ -105,7 +105,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
-    'build', 'eslint', 'test'
+    'concat', 'uglify', 'cssmin', 'eslint', 'test' 
   ]);
 
 
