@@ -66,6 +66,7 @@ module.exports = function(grunt) {
 
     shell: {
       prodServer: {
+        command: 'git push live master'
       }
     },
   });
@@ -97,7 +98,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
-      grunt.task.run(['eslint', 'test']);
+      grunt.task.run(['eslint', 'test', 'shell']);
       // add your production server task here
     } else {
       grunt.task.run([ 'server-dev' ]);
