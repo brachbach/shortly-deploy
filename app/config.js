@@ -7,7 +7,6 @@ var db = mongoose.connection;
 // db.once('open', function() {
   // we're connected!
 
-
 // db.db.listCollections({name: 'urlSchema'})
 //   .next((err, collinfo) => {
 //     if (err) {
@@ -70,5 +69,5 @@ var db = mongoose.connection;
 // //   }
 // });
 
-module.exports = db; 
+module.exports = mongoose; 
 

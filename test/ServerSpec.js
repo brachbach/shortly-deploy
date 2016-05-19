@@ -11,7 +11,7 @@ var Link = require('../app/models/link');
 // NOTE: these tests are designed for mongo!
 /////////////////////////////////////////////////////
 
-xdescribe('', function() {
+describe('', function() {
 
   beforeEach(function(done) {
     // Log out currently signed in user
@@ -172,6 +172,7 @@ xdescribe('', function() {
   describe('Account Creation:', function() {
 
     it('Signup creates a new user', function(done) {
+      console.log('im in this test');
       request(app)
         .post('/signup')
         .send({
@@ -179,8 +180,10 @@ xdescribe('', function() {
           'password': 'Svnh' })
         .expect(302)
         .expect(function() {
+          console.log('im in this test after 302');
           User.findOne({'username': 'Svnh'})
             .exec(function(err, user) {
+              console.log('this is user in test user: ', user);
               expect(user.username).to.equal('Svnh');
             });
         })

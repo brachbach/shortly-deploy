@@ -1,12 +1,12 @@
-var db = require('../config');
+var mongoose = require('../config');
 var crypto = require('crypto');
 var mongoose = require('mongoose'); 
+// mongoose.connect('mongodb://localhost/test');
 
 var linksSchema = mongoose.Schema({
   url: String,
   baseUrl: String,
   code: String,
-  title: String,
   visits: Number,
   date: {type: Date, default: Date.now}
 });
@@ -14,10 +14,11 @@ var linksSchema = mongoose.Schema({
 linksSchema.pre('save', function(next) {
   var shasum = crypto.createHash('sha1');
   shasum.update(this.url);
-  this.code = shasum.digest('hex').slice(0, 5); //try set if doesnt work
+  this.code = shasum.digest('hex').slice(0, 5);
+  next(); //try set if doesnt work
 });
 
-var Link = db.model('Link', linksSchema);
+var Link = mongoose.connection.model('Link', linksSchema);
 
 
 // var Link = db.Model.extend({

@@ -1,7 +1,7 @@
-var db = require('../config');
+var mongoose = require('../config');
 var bcrypt = require('bcrypt-nodejs');
 var Promise = require('bluebird');
-var mongoose = require('mongoose');
+// mongoose.connect('mongodb://localhost/test');
 
 var usersSchema = mongoose.Schema({
   username: String,
@@ -10,14 +10,17 @@ var usersSchema = mongoose.Schema({
 });
 
 usersSchema.pre('save', function(next) {
+  // console.log('inside pre save');
   var cipher = Promise.promisify(bcrypt.hash);
   return cipher(this.password, null, null).bind(this)
     .then(function(hash) {
       this.password = hash;// fix this
+      // console.log ('return hash;', hash);
+      next();
     });
 });
 
-var User = db.model('User', usersSchema);
+var User = mongoose.connection.model('User', usersSchema);
 
 
 
