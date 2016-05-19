@@ -92,11 +92,12 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'concat', 'uglify', 'cssmin', 'server-dev'
+    'concat', 'uglify', 'cssmin'
   ]);
 
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
+      grunt.task.run(['eslint', 'test']);
       // add your production server task here
     } else {
       grunt.task.run([ 'server-dev' ]);
@@ -105,7 +106,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
-    'concat', 'uglify', 'cssmin', 'eslint', 'test', 'nodemon'
+    'build', 'upload' //'nodemon'
   ]);
 
 

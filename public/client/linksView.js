@@ -2,6 +2,7 @@ Shortly.LinksView = Backbone.View.extend({
   className: 'links',
 
   initialize: function() {
+    console.log('should minify');
     this.collection.on('sync', this.addAll, this);
     this.collection.fetch();
   },
