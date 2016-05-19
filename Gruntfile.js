@@ -28,7 +28,7 @@ module.exports = function(grunt) {
     uglify: {
       target: {
         files: {
-          'public/dist/builtUglify.min.js' : 'public/dist/built.js'
+          'public/dist/builtUglify.min.js': 'public/dist/built.js',
         }
       }
     },
@@ -40,6 +40,11 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
+      target: {
+        files: {
+          'public/dist/cssUglify.min.css': 'public/style.css'
+        }
+      }
     },
 
     watch: {
@@ -87,7 +92,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'concat', 'uglify'
+    'concat', 'uglify', 'cssmin'
   ]);
 
   grunt.registerTask('upload', function(n) {
