@@ -7,6 +7,7 @@ window.Shortly = Backbone.View.extend({
   },
 
   initialize: function() {
+    console.log('should really restart');
     console.log( 'Shortly is running' );
     $('body').append(this.render().el);
 
