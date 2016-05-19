@@ -1,7 +1,7 @@
-var db = require('mongoose');
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 mongoose.connect('mongodb://localhost/test'); //may not be right filepath
-//var db = mongoose.connection;
+var db = mongoose.connection;
 
 // db.on('error', console.error.bind(console, 'connection error:'));
 // db.once('open', function() {
@@ -11,29 +11,25 @@ mongoose.connect('mongodb://localhost/test'); //may not be right filepath
 // db.db.listCollections({name: 'urlSchema'})
 //   .next((err, collinfo) => {
 //     if (err) {
-      var urlsSchema = mongoose.Schema({
-        url: String,
-        baseUrl: String,
-        code: String,
-        title: String,
-        visits: Number,
-        date: {type: Date, default: Date.now}
-      });
+      // var urlsSchema = mongoose.Schema({
+      //   url: String,
+      //   baseUrl: String,
+      //   code: String,
+      //   title: String,
+      //   visits: Number,
+      //   date: {type: Date, default: Date.now}
+      // });
   //   }
   // }); 
 
 // db.db.listCollections({name: 'usersSchema'})
 //   .next((err, collinfo) => {
 //     if (err) {
-      var usersSchema = module.exports.usersSchema = mongoose.Schema({
-        username: String,
-        password: String,
-        date: {type: Date, default: Date.now}
-      });
+
   //   }
   // }); 
 
-});
+// });
 
 // var path = require('path');
 // var knex = require('knex')({
@@ -74,5 +70,5 @@ mongoose.connect('mongodb://localhost/test'); //may not be right filepath
 // //   }
 // });
 
-module.exports.db = db; 
+module.exports = db; 
 
