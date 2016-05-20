@@ -180,10 +180,10 @@ describe('', function() {
           'password': 'Svnh' })
         .expect(302)
         .expect(function() {
-          console.log('im in this test after 302');
+          // console.log('im in this test after 302');
           User.findOne({'username': 'Svnh'})
             .exec(function(err, user) {
-              console.log('this is user in test user: ', user);
+              // console.log('this is user in test user: ', user);
               expect(user.username).to.equal('Svnh');
             });
         })
