@@ -49,7 +49,7 @@
     "root": "rootPath",
     "app": {
         "name": "shortly-deploy3"
-    },
-    "port": "process.env.port",
+      },
+    "port": "process.env.port"
   }
 }
